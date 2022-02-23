@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('front');
 });
 
 Auth::routes();
@@ -22,20 +22,10 @@ Auth::routes();
 
 // area privata 
 Route::prefix("admin")->namespace("Admin")->middleware("auth")->group(function() {
-    Route::resource("posts", "PostController");
     Route::get('/home', 'HomeController@index')->name('home');
+    Route::resource("posts", "PostController");
     Route::resource("categories", "CategoryController");
 });
 
 
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
